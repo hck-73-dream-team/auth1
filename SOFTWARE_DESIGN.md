@@ -3,12 +3,15 @@
 ## 1. Product Information
 
 ### Product Name
+
 OAuth Authentication Service
 
 ### Description
+
 A comprehensive OAuth 2.0 authentication service that enables users to authenticate using third-party providers (Google, GitHub, Facebook) alongside traditional email/password authentication. This service provides secure token-based authentication and user management.
 
 ### Key Features
+
 - Traditional email/password authentication
 - OAuth 2.0 integration with multiple providers (Google, GitHub, Facebook)
 - JWT token-based session management
@@ -18,6 +21,7 @@ A comprehensive OAuth 2.0 authentication service that enables users to authentic
 - Refresh token mechanism
 
 ### Technology Stack
+
 - **Backend**: Node.js with Express.js
 - **Database**: PostgreSQL
 - **ORM**: Sequelize
@@ -68,9 +72,11 @@ A comprehensive OAuth 2.0 authentication service that enables users to authentic
 ## 3. Use Case Descriptions
 
 ### UC-01: Register with Email/Password
+
 **Actor**: User  
 **Precondition**: User does not have an account  
 **Flow**:
+
 1. User provides username, email, and password
 2. System validates input (email format, password strength)
 3. System checks if email is already registered
@@ -83,9 +89,11 @@ A comprehensive OAuth 2.0 authentication service that enables users to authentic
 ---
 
 ### UC-02: Login with Email/Password
+
 **Actor**: User  
 **Precondition**: User has a registered account  
 **Flow**:
+
 1. User provides email and password
 2. System validates input
 3. System finds user by email
@@ -98,9 +106,11 @@ A comprehensive OAuth 2.0 authentication service that enables users to authentic
 ---
 
 ### UC-03: Login with OAuth Provider (Google/GitHub/Facebook)
+
 **Actor**: User  
 **Precondition**: None  
 **Flow**:
+
 1. User clicks on OAuth provider login button
 2. System redirects to OAuth provider's authorization page
 3. User authenticates with OAuth provider
@@ -118,9 +128,11 @@ A comprehensive OAuth 2.0 authentication service that enables users to authentic
 ---
 
 ### UC-04: Link OAuth Account
+
 **Actor**: Authenticated User  
 **Precondition**: User is logged in  
 **Flow**:
+
 1. User initiates OAuth linking for a provider
 2. System redirects to OAuth provider
 3. User authorizes the application
@@ -134,9 +146,11 @@ A comprehensive OAuth 2.0 authentication service that enables users to authentic
 ---
 
 ### UC-05: View/Update Profile
+
 **Actor**: Authenticated User  
 **Precondition**: User is logged in  
 **Flow**:
+
 1. User requests profile information
 2. System validates JWT token
 3. System retrieves user profile with linked OAuth providers
@@ -392,6 +406,7 @@ Relationships:
 ## 7. User Interface Mockup
 
 ### 7.1 Login Page
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │                                                      │
@@ -421,6 +436,7 @@ Relationships:
 ```
 
 ### 7.2 Registration Page
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │                                                      │
@@ -455,6 +471,7 @@ Relationships:
 ```
 
 ### 7.3 Profile Page
+
 ```
 ┌─────────────────────────────────────────────────────┐
 │  [☰ Menu]              Profile         [Logout]     │
@@ -494,6 +511,7 @@ Relationships:
 ## 8. API Specification
 
 ### Base URL
+
 ```
 http://localhost:3000/api
 ```
@@ -501,6 +519,7 @@ http://localhost:3000/api
 ### 8.1 Authentication Endpoints
 
 #### Register with Email/Password
+
 ```
 POST /auth/register
 
@@ -523,6 +542,7 @@ Response (201):
 ```
 
 #### Login with Email/Password
+
 ```
 POST /auth/login
 
@@ -547,6 +567,7 @@ Response (200):
 ```
 
 #### Refresh Token
+
 ```
 POST /auth/refresh
 
@@ -563,6 +584,7 @@ Response (200):
 ```
 
 #### Logout
+
 ```
 POST /auth/logout
 Headers: Authorization: Bearer <token>
@@ -583,6 +605,7 @@ Response (200):
 ### 8.2 OAuth Endpoints
 
 #### Google OAuth - Initiate
+
 ```
 GET /auth/google
 
@@ -590,6 +613,7 @@ Response: Redirects to Google OAuth consent screen
 ```
 
 #### Google OAuth - Callback
+
 ```
 GET /auth/google/callback?code=...
 
@@ -599,6 +623,7 @@ Redirect URL: http://frontend.com/auth/callback?
 ```
 
 #### GitHub OAuth - Initiate
+
 ```
 GET /auth/github
 
@@ -606,6 +631,7 @@ Response: Redirects to GitHub OAuth consent screen
 ```
 
 #### GitHub OAuth - Callback
+
 ```
 GET /auth/github/callback?code=...
 
@@ -613,6 +639,7 @@ Response: Redirects to frontend with tokens
 ```
 
 #### Facebook OAuth - Initiate
+
 ```
 GET /auth/facebook
 
@@ -620,6 +647,7 @@ Response: Redirects to Facebook OAuth consent screen
 ```
 
 #### Facebook OAuth - Callback
+
 ```
 GET /auth/facebook/callback?code=...
 
@@ -631,6 +659,7 @@ Response: Redirects to frontend with tokens
 ### 8.3 User Profile Endpoints
 
 #### Get Current User Profile
+
 ```
 GET /users/profile
 Headers: Authorization: Bearer <token>
@@ -656,6 +685,7 @@ Response (200):
 ```
 
 #### Update User Profile
+
 ```
 PUT /users/profile
 Headers: Authorization: Bearer <token>
@@ -683,6 +713,7 @@ Response (200):
 ### 8.4 OAuth Provider Management
 
 #### Link OAuth Provider
+
 ```
 GET /auth/link/:provider
 Headers: Authorization: Bearer <token>
@@ -693,6 +724,7 @@ Response: Redirects to OAuth provider
 ```
 
 #### Link OAuth Provider Callback
+
 ```
 GET /auth/link/:provider/callback?code=...
 Headers: Authorization: Bearer <token>
@@ -711,6 +743,7 @@ Response (200):
 ```
 
 #### Unlink OAuth Provider
+
 ```
 DELETE /auth/unlink/:provider
 Headers: Authorization: Bearer <token>
@@ -728,6 +761,7 @@ Response (200):
 ### 8.5 Error Responses
 
 All error responses follow this format:
+
 ```json
 {
   "message": "Error description",
@@ -736,6 +770,7 @@ All error responses follow this format:
 ```
 
 **HTTP Status Codes:**
+
 - `200`: OK
 - `201`: Created
 - `400`: Bad Request (validation errors)
@@ -750,23 +785,27 @@ All error responses follow this format:
 ## 9. Security Considerations
 
 ### 9.1 Password Security
+
 - Passwords hashed using bcrypt with salt rounds of 10
 - Minimum password length: 8 characters
 - Password complexity requirements enforced
 
 ### 9.2 Token Security
+
 - Access tokens expire in 1 hour
 - Refresh tokens expire in 7 days
 - Tokens are revoked on logout
 - JWT tokens signed with HS256 algorithm
 
 ### 9.3 OAuth Security
+
 - State parameter used to prevent CSRF attacks
 - OAuth tokens encrypted before storage
 - Secure callback URLs with HTTPS in production
 - Regular token refresh for OAuth providers
 
 ### 9.4 API Security
+
 - CORS configured for allowed origins
 - Rate limiting on authentication endpoints
 - Input validation and sanitization

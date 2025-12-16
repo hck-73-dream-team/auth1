@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/register", UserController.register);
+app.post("/login", UserController.login);
 
 // Start the server
 app.listen(port, () => {
