@@ -1,4 +1,5 @@
-const express = require('express');
+const express = require("express");
+const UserController = require("./controllers/UserController");
 const app = express();
 const port = 3000;
 
@@ -6,9 +7,11 @@ const port = 3000;
 app.use(express.json());
 
 // Sample route
-app.get('/', (req, res) => {
-  res.send('Hello from Auth1 App!');
+app.get("/", (req, res) => {
+  res.send("Hello from Auth1 App!");
 });
+
+app.post("/register", UserController.register);
 
 // Start the server
 app.listen(port, () => {
