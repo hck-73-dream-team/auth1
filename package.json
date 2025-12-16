@@ -1,0 +1,28 @@
+{
+  "name": "auth1",
+  "version": "1.0.0",
+  "description": "-> - Product info -> - Use case diagram -> - Use case description -> - Arch diagram -> - Class Diagram -> - ERD -> - UI -> - api spec",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hck-73-dream-team/auth1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hck-73-dream-team/auth1/issues"
+  },
+  "homepage": "https://github.com/hck-73-dream-team/auth1#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.16.3",
+    "sequelize": "^6.37.7"
+  }
+}
